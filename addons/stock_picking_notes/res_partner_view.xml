@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Update res_partnee !-->
+        
+        <record model="ir.ui.view" id="picking_notes_partner_view">
+            <field name="name">picking.notes.partner.view</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <data>
+                	<xpath expr="//field[@name='comment']" position="before">
+                		<separator string="Internal Notes" />
+                	</xpath>	
+                    <xpath expr="//field[@name='comment']" position="after">
+                    	<separator string="Picking Notes" />
+                    	<group>
+                        	<field name="picking_notes" nolabel="1" placeholder="Put a picking note..."/>
+                    	</group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</openerp>
+

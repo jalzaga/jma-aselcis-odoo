@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+	<record id="picking_notes_view_order_form" model="ir.ui.view">
+      	<field name="name">picking.notes.sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+        	<data>
+        	  <xpath expr="//field[@name='note']" position="before">
+        	  <separator string="Picking Notes" />
+              	<group>
+                	<field name="picking_notes" nolabel="1" placeholder="Put a picking note..."/>
+                </group>
+        	  </xpath>
+        	</data>
+    	</field>
+    </record>
+  </data>            
+</openerp>
+
