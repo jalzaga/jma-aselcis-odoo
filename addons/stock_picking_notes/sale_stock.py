@@ -24,7 +24,9 @@ import itertools
 from lxml import etree
 
 from openerp.osv import fields, osv
-from openerp.exceptions import except_orm, Warning, RedirectWarning
+from openerp.tools.translate import _
+from openerp.osv.orm import except_orm
+from openerp.exceptions import Warning, RedirectWarning
 import openerp.addons.decimal_precision as dp
 from openerp.tools.float_utils import float_round as round
 
