@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Update res_partner !-->
+        
+        <record model="ir.ui.view" id="unique_vat_check_partner_view">
+            <field name="name">unique.vat.check.partner.view</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+               <field name="vat" position="replace">
+                 <field name="vat" on_change="onchange_vat(vat,is_company)"/>
+               </field>
+            </field>
+        </record>
+    </data>
+</openerp>
+
