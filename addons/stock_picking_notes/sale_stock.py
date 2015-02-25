@@ -67,12 +67,13 @@ class stock_picking(osv.osv):
     _inherit = "stock.picking"
     
     def create(self, cr, user, vals, context=None):
-        if vals:
+        if 'origin' in vals.keys() and vals['origin']:
             sale_obj = self.pool.get('sale.order')
             sale_ids = sale_obj.search(cr, user, [('name', '=', vals['origin'])], context=context)
-            picking_notes = sale_obj.browse(cr, user, sale_ids, context=context).picking_notes
-            if picking_notes:
-                vals['picking_notes'] = picking_notes
+            if sale_ids:
+                picking_notes = sale_obj.browse(cr, user, sale_ids, context=context).picking_notes
+                if picking_notes:
+                    vals['picking_notes'] = picking_notes
         return super(stock_picking, self).create(cr, user, vals, context=context)
 
     
